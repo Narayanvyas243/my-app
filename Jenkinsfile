@@ -8,10 +8,10 @@ pipeline {
     stages {
 
         stage('Clone Source') {
-    steps {
-        git branch: 'main', url: 'https://github.com/Narayanvyas243/my-app.git'
-    }
-}
+            steps {
+                git branch: 'main', url: 'https://github.com/Narayanvyas243/my-app.git'
+            }
+        }
 
         stage('Build Docker Image') {
             steps {
@@ -22,7 +22,7 @@ pipeline {
         stage('Login to Docker Hub') {
             steps {
                 withCredentials([string(credentialsId: 'dockerhub-token', variable: 'DOCKER_TOKEN')]) {
-                    sh 'echo $DOCKER_TOKEN | docker login -u your-narayanvyas243 --password-stdin'
+                    sh 'echo $DOCKER_TOKEN | docker login -u narayanvyas243 --password-stdin'
                 }
             }
         }
@@ -34,4 +34,3 @@ pipeline {
         }
     }
 }
-
